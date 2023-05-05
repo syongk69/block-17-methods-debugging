@@ -10,29 +10,29 @@ const coffeeMenuName = coffeeMenu.map(coffeeMenu => coffeeMenu.name);
 console.log(coffeeMenuName);
 
 // 4. Print an array of drinks that cost 5 and under.
-const coffeeMenuPrice = coffeeMenu.filter(coffeeMenu => coffeeMenu.price <= 5);
-const coffeeMenuPriceName = coffeeMenuPrice.map(coffeeMenu => coffeeMenu.name);
-console.log(coffeeMenuPriceName);
+const coffeeMenuPrice = coffeeMenu.filter(coffeeMenu => coffeeMenu.price <= 5) .map(coffeeMenu => coffeeMenu.name);
+console.log(coffeeMenuPrice);
 
 // 5. Print an array of drinks that are priced at an even number.
-const coffeeMenuPriceEven = coffeeMenu.filter(coffeeMenu => coffeeMenu.price % 2 === 0);
-const coffeeMenuPriceEvenName = coffeeMenuPriceEven.map(coffeeMenu => coffeeMenu.name);
-console.log(coffeeMenuPriceEvenName);
+const coffeeMenuPriceEven = coffeeMenu.filter(coffeeMenu => coffeeMenu.price % 2 === 0) .map(coffeeMenu => coffeeMenu.name);
+console.log(coffeeMenuPriceEven);
 
 // 6. Print the total if you were to order one of every drink.
-let coffeeMenuTotal = 0;
-for (let i = 0; i < coffeeMenu.length; i++) {
-coffeeMenuTotal += coffeeMenu[i].price; // **reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition_assignment
-}
+const coffeeMenuTotal = coffeeMenu.reduce((priceTotal, priceEach) => priceTotal + priceEach.price, 0);
 console.log('Total price of each drink is $' + coffeeMenuTotal);
+// Alternative Method:
+// let coffeeMenuTotal = 0;
+// for (let i = 0; i < coffeeMenu.length; i++) {
+// coffeeMenuTotal += coffeeMenu[i].price;
+// }
+// console.log('Total price of each drink is $' + coffeeMenuTotal);
 
 // 7. Print an array with all the drinks that are seasonal.
-const coffeeMenuSeasonal = coffeeMenu.filter(coffeeMenu => coffeeMenu.seasonal === true);
-const coffeeMenuSeasonalName = coffeeMenuSeasonal.map(coffeeMenu => coffeeMenu.name);
-console.log(coffeeMenuSeasonalName);
+const coffeeMenuSeasonal = coffeeMenu.filter(coffeeMenu => coffeeMenu.seasonal === true) .map(coffeeMenu => coffeeMenu.name);
+console.log(coffeeMenuSeasonal);
 
 // 8. Print all the seasonal drinks with the words "with imported beans" after the item name. For example: "affogato with imported beans".
-const coffeeMenuImportedName = coffeeMenuSeasonal.map(coffeeMenu => coffeeMenu.name + 'with imported beans');
+const coffeeMenuImportedName = coffeeMenu.filter (coffeeMenu => coffeeMenu.seasonal === true) .map(coffeeMenu => coffeeMenu.name + ' with imported beans');
 console.log(coffeeMenuImportedName);
 
 
